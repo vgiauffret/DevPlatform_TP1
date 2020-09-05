@@ -25,6 +25,15 @@ jobs:
       - name: Install NPM dependencies
         run: |
           npm install --production --unsafe-perm
+          
+      ‐ name: build-push
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ DOCKER_USERNAME }}
+          password: ${{ DOCKER_PASSWORD }}
+          registry: myregistry
+          repository: myorg/DevPlatform_TP1
+          tags: v1
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
